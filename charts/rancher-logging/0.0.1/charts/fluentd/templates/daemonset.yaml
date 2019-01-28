@@ -43,6 +43,8 @@ spec:
         command: {{ .Values.command }}
         {{ end }}
         env:
+        - name: TEST_TEST
+          value: woshi
         {{- range $key, $value := .Values.env }}
         - name: {{ $key }}
           value: {{ $value | quote }}
