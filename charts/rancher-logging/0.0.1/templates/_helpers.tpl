@@ -36,7 +36,7 @@
 
 
 {{- define "system_default_registry" -}}
-{{- if .Values.systemDefaultRegistry -}}
+{{- if .Values.global.systemDefaultRegistry -}}
 {{- "k8s.io/" -}}
 {{- else -}}
 {{- "k3s.io/" -}}
