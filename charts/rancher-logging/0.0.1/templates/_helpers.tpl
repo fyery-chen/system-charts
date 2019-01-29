@@ -37,7 +37,7 @@
 
 {{- define "system_default_registry" -}}
 {{- if .Values.systemDefaultRegistry -}}
-{{- printf "%s/" .Values.systemDefaultRegistry -}}
+{{- "k8s.io/" -}}
 {{- else -}}
 {{- "" -}}
 {{- end -}}
