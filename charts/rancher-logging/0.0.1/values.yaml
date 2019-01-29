@@ -1,8 +1,8 @@
 fluentd:
-  enabled: false
+  enabled: true 
 fluentd-tester:
-  enabled: false
+  enabled: true 
 log-aggregator:
-  enabled: false
+  enabled: true 
   flexVolumeDir: /usr/libexec/kubernetes/kubelet-plugins/volume/exec
 systemDefaultRegistry: "k8s.io"
