@@ -39,6 +39,6 @@
 {{- if .Values.systemDefaultRegistry -}}
 {{- "k8s.io/" -}}
 {{- else -}}
-{{- "" -}}
+{{- "k3s.io/" -}}
 {{- end -}}
 {{- end -}}
