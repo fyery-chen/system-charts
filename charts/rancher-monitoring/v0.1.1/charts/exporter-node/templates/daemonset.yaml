@@ -70,6 +70,10 @@ spec:
       securityContext:
         runAsNonRoot: true
         runAsUser: 65534
+  {{- if .Values.global.imagePullSecret }}
+      imagePullSecrets:
+        - name: docker-image-secret
+  {{- end }}
       tolerations:
       - operator: Exists
       nodeSelector:

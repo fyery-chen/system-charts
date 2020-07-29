@@ -3,13 +3,13 @@ operator:
   enabledRBAC: true
   apiGroup: "monitoring.coreos.com"
   image:
-    repository: rancher/coreos-prometheus-operator
+    repository: registry-vpc.cn-shanghai.aliyuncs.com/apsaradb_pub_online/coreos-prometheus-operator
     tag: v0.38.1
     prometheusConfigReloader:
-      repository: rancher/coreos-prometheus-config-reloader
+      repository: registry-vpc.cn-shanghai.aliyuncs.com/apsaradb_pub_online/coreos-prometheus-config-reloader
       tag: v0.38.1
     configmapReload:
-      repository: rancher/coreos-configmap-reload
+      repository: registry-vpc.cn-shanghai.aliyuncs.com/apsaradb_pub_online/coreos-configmap-reload
       tag: v0.0.1
   resources:
     limits:
@@ -144,7 +144,7 @@ exporter-node:
   enabled: false
   apiGroup: "monitoring.coreos.com"
   image:
-    repository: rancher/prom-node-exporter
+    repository: registry-vpc.cn-shanghai.aliyuncs.com/apsaradb_pub_online/prom-node-exporter
     tag: v0.18.1
   nodeSelectors: []
   resources:
@@ -185,7 +185,7 @@ exporter-kube-state:
   enabled: false
   apiGroup: "monitoring.coreos.com"
   image:
-    repository: rancher/coreos-kube-state-metrics
+    repository: registry-vpc.cn-shanghai.aliyuncs.com/apsaradb_pub_online/coreos-kube-state-metrics
     tag: v1.9.5
   nodeSelectors: []
   resources:
@@ -204,12 +204,13 @@ exporter-kube-state:
     fsGroup: 65534
   livenessProbe: {}
   readinessProbe: {}
+  hostNetwork: true
 
 alertmanager:
   enabled: false
   apiGroup: "monitoring.coreos.com"
   image:
-    repository: rancher/prom-alertmanager
+    repository: registry.cn-shanghai.aliyuncs.com/apsaradb_pub_online/prom-alertmanager
     tag: v0.20.0
   nodeSelectors: []
   resources:
@@ -247,19 +248,20 @@ alertmanager:
     runAsUser: 1000
     runAsNonRoot: true
     fsGroup: 2000
+  hostNetwork: true
 
 grafana:
   enabled: false
   level: cluster
   apiGroup: "monitoring.coreos.com"
   image:
-    repository: rancher/grafana-grafana
+    repository: registry-vpc.cn-shanghai.aliyuncs.com/apsaradb_pub_online/grafana-grafana
     tag: 6.7.4
     tool:
-      repository: rancher/prometheus-auth
+      repository: registry-vpc.cn-shanghai.aliyuncs.com/apsaradb_pub_online/prometheus-auth
       tag: v0.2.0
     proxy:
-      repository: rancher/nginx
+      repository: registry-vpc.cn-shanghai.aliyuncs.com/apsaradb_pub_online/nginx
       tag: 1.17.4-alpine
   nodeSelectors: []
   resources:
@@ -313,16 +315,16 @@ prometheus:
           fieldPath: status.podIP
   apiGroup: "monitoring.coreos.com"
   image:
-    repository: rancher/prom-prometheus
+    repository: registry-vpc.cn-shanghai.aliyuncs.com/apsaradb_pub_online/prom-prometheus
     tag: v2.17.2
     auth:
-      repository: rancher/prometheus-auth
+      repository: registry-vpc.cn-shanghai.aliyuncs.com/apsaradb_pub_online/prometheus-auth
       tag: v0.2.0
     proxy:
-      repository: rancher/nginx
+      repository: registry-vpc.cn-shanghai.aliyuncs.com/apsaradb_pub_online/nginx
       tag: 1.17.4-alpine
     thanos:
-      repository: rancher/thanos
+      repository: registry-vpc.cn-shanghai.aliyuncs.com/apsaradb_pub_online/thanos
       tag: v0.10.1
   nodeSelectors: []
   resources:
@@ -388,12 +390,14 @@ global:
   clusterName: ""
   projectName: ""
   installCRDs: true
+  imagePullSecret: true
+  hostNetwork: true
 
 operator-init:
   enabled: false
   apiGroup: "monitoring.coreos.com"
   image:
-    repository: rancher/istio-kubectl
+    repository: registry-vpc.cn-shanghai.aliyuncs.com/apsaradb_pub_online/istio-kubectl
     tag: 1.1.5
   resources:
     limits:

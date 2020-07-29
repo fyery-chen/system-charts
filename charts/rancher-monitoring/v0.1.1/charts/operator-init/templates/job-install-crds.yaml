@@ -33,3 +33,8 @@ spec:
         configMap:
           name: {{ template "app.fullname" . }}
       restartPolicy: Never
+{{- if .Values.global.imagePullSecret }}
+      imagePullSecrets:
+      - name: docker-image-secret
+{{- end }}
+      hostNetwork: {{ .Values.global.hostNetwork }}

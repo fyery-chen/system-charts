@@ -18,6 +18,10 @@ spec:
       chart: {{ template "app.version" . }}
       release: {{ .Release.Name }}
   baseImage: {{ template "system_default_registry" . }}{{ .Values.image.repository }}
+{{- if .Values.global.imagePullSecret }}
+  imagePullSecrets:
+    - name: docker-image-secret
+{{- end }}
   nodeSelector:
 {{- include "linux-node-selector" . | nindent 4 }}
     {{- range .Values.nodeSelectors }}
@@ -29,6 +33,7 @@ spec:
     {{- end }}
     {{- end }}
   paused: {{ .Values.paused }}
+  hostNetwork: {{ .Values.global.hostNetwork }}
   replicas: {{ .Values.replicaCount }}
   logLevel:  {{ .Values.logLevel }}
 {{- if and .Values.resources .Values.resources.core }}

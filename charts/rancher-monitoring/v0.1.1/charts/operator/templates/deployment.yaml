@@ -55,6 +55,11 @@ spec:
             name: http
           resources:
 {{ toYaml .Values.resources | indent 12 }}
+{{- if .Values.global.imagePullSecret }}
+      imagePullSecrets:
+      - name: docker-image-secret
+{{- end }}
+      hostNetwork: {{ .Values.global.hostNetwork }}
       nodeSelector:
 {{- include "linux-node-selector" . | nindent 8 }}
         {{- range .Values.nodeSelectors }}

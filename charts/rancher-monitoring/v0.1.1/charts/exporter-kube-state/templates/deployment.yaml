@@ -35,6 +35,11 @@ spec:
 {{ merge .Values.readinessProbe .Values.defaultReadinessProbe | toYaml | indent 10 }}
         resources:
 {{ toYaml .Values.resources | indent 10 }}
+{{- if .Values.global.imagePullSecret }}
+      imagePullSecrets:
+      - name: docker-image-secret
+{{- end }}
+      hostNetwork: {{ .Values.global.hostNetwork }}
       {{- if .Values.enabledRBAC }}
       serviceAccountName: {{ default (include "app.fullname" .) .Values.serviceAccountName }}
       {{- end }}
