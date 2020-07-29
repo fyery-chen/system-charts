@@ -12,7 +12,7 @@ spec:
   template:
     spec:
       nodeSelector:
-{{- include "linux-node-selector" . | nindent 8 }}
+        rkp/monitoring-workloads: operator
       tolerations:
 {{- include "linux-node-tolerations" . | nindent 8}}
       serviceAccountName: {{ template "app.fullname" . }}
