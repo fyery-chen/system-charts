@@ -1073,6 +1073,9 @@ spec:
             baseImage:
               description: Base image to use for a Prometheus deployment.
               type: string
+            hostNetwork:
+              description: The network namespace of pod.
+              type: boolean
             configMaps:
               description: ConfigMaps is a list of ConfigMaps in the same namespace
                 as the Prometheus object, which shall be mounted into the Prometheus
